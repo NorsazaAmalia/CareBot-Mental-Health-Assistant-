@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>MHA</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/test.css">
+    <link rel="stylesheet" type="text/css" href="/static/modal.css">
+    <link rel="stylesheet" type="text/css" href="/static/progress.css">
+    <!--<link rel="stylesheet" type="text/css" href="/static/footer.css">-->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"/>
+    <!-- fontawesome cdn -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body></body>
+    <!-- Contents -->
+    <section class="hero">
+      <div class="container">
+        <header>
+          <div class="logo">
+            <h2>MHA</h2>
+          </div>
+        </header>
+
+        <div class="banner">
+          <div class="container">
+            <div class="details">
+              <h1>Mental Health  <br /> Assistant </h1>
+              <p>Do you or a loved one suffer from depression, anxiety, or stress? What symptoms are you experiencing? How are you dealing with these feelings? What actions can you do to improve your mental health?</p>
+              <p>This website consist of 3 types of test which is Stress Test, Anxiety Test and Depression Test. User need to have an account to take a test to know their mental health state. PLEASE CLICK ON BUTTON TEST TO TAKE A TEST.</p>
+  
+              <a href="{{ url_for('login') }}" id="helpBtn" class="btn">Test</a>
+            </div>
+  
+            <div class="cover">
+              <img src="/static/code.jpg" alt="cover image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+      
+
+      <script src="/static/response.js"></script>
+      <script src="/static/diagnose.js"></script>
+      <script src="/static/chat.js"></script>
+      <script src="/static/modal.js"></script>
+      <script src="/static/test.js"></script>
+     
+    </div>
+
+  </body>
+</html>

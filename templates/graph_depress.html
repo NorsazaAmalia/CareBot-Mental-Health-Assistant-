@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>MHA</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/test.css">
+    <link rel="stylesheet" type="text/css" href="/static/modal.css">
+    <link rel="stylesheet" type="text/css" href="/static/progress.css">
+    <!--<link rel="stylesheet" type="text/css" href="/static/footer.css">-->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"/>
+    <!-- fontawesome cdn -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.3.2/chart.min.js" integrity="sha512-VCHVc5miKoln972iJPvkQrUYYq7XpxXzvqNfiul1H4aZDwGBGC0lq373KNleaB2LpnC2a/iNfE5zoRYmB4TRDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </head>
+  <body></body>
+    <!-- Contents -->
+    <section class="hero">
+      <div class="container">
+        <header>
+          <div class="logo">
+            <h2>MHA</h2>
+          </div>
+        </header>
+
+        <div class="banner">
+          <div class="container">
+            <div class="details">
+                    <!--Graph start--> 
+ 
+    <center> 
+        <div class="p-5" style="width: 100%; max-width: 900px;"> 
+            <canvas id="myChart" max-width="100" max-height="100"></canvas> 
+            <script> 
+            var ctx = document.getElementById('myChart').getContext('2d'); 
+            var myChart = new Chart(ctx, { 
+                type: 'bar', 
+                data: { 
+                    labels: {{ labels | safe }}, 
+                    datasets: [{ 
+                        label: 'Graph of Depression Test', 
+                        data: {{ values | safe}}, 
+                        backgroundColor : [ 
+                            'rgba(255, 99, 132, 0.2)', 
+                            'rgba(54, 162, 235, 0.2)', 
+                            'rgba(255, 206, 86, 0.2)', 
+                            'rgba(75, 192, 192, 0.2)', 
+                            'rgba(153, 102, 255, 0.2)', 
+                            'rgba(255, 159, 64, 0.2)' 
+                        ], 
+                        borderColor: [ 
+                            'rgba(255, 99, 132, 1)', 
+                            'rgba(54, 162, 235, 1)', 
+                            'rgba(255, 206, 86, 1)', 
+                            'rgba(75, 192, 192, 1)', 
+                            'rgba(153, 102, 255, 1)', 
+                            'rgba(255, 159, 64, 1)' 
+                        ], 
+                        borderWidth: 1 
+                    }] 
+                }, 
+                options: { 
+                    scales: { 
+                        y: { 
+                            beginAtZero: true 
+                        } 
+                    } 
+                } 
+            }); 
+            </script> 
+        </div>  
+         
+    </center> 
+   
+    <!--Graph end -->
+    <br>
+    <center>
+        <a href="{{ url_for('home') }}" id="helpBtn" class="btn">Home</a>
+        <a href=graph_stress.html id="helpBtn" class="btn">Stress</a>
+        <a href=graph_anxiety.html id="helpBtn" class="btn">Anxiety</a>
+        <a href=graph_depress.html id="helpBtn" class="btn">Depression</a>
+    </center>
+    </br>
+              
+            </div>
+  
+
+          </div>
+        </div>
+      </div>
+    </section>
+      
+
+      <script src="/static/response.js"></script>
+      <script src="/static/diagnose.js"></script>
+      <script src="/static/chat.js"></script>
+      <script src="/static/modal.js"></script>
+      <script src="/static/test.js"></script>
+     
+    </div>
+
+  </body>
+</html>

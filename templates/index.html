@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>MHA HOME</title>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <link rel="stylesheet" type="text/css" href="/static/test.css">
+    <link rel="stylesheet" type="text/css" href="/static/modal.css">
+    <link rel="stylesheet" type="text/css" href="/static/progress.css">
+    <!--<link rel="stylesheet" type="text/css" href="/static/footer.css">-->
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"/>
+    <!-- fontawesome cdn -->
+	  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  </head>
+  <body></body>
+    <!-- Contents -->
+    <section class="hero">
+      <div class="container">
+        <header>
+          <div class="logo">
+            <h2>MHA
+            </h2>
+          </div>
+          <a href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt  , align-right"> </i>Logout </a> 
+        </header>
+
+        <div class="banner">
+          <div class="container">
+            <div class="details">
+              <h1>Mental Health  <br /> Assistant </h1>
+              <p>Do you or a loved one suffer from depression, anxiety, or stress? What symptoms are you experiencing? How are you dealing with these feelings? What actions can you do to improve your mental health?</p>
+              <p>Taking a mental health test might be the first step toward obtaining the support you need to live a full life while suffering from depressed symptoms such as low mood, loss of sleep, stress, or anxiety. Everyone goes through difficult times. So, if symptoms like these begin to interfere with your life or the life of a loved one, IT IS IMPORTANT TO TAKE ACTION.</p>
+  
+              <a href="#" id="helpBtn" class="btn">About</a>
+              <a href="#" id="myBtn" class="btn">Take a Test</a>
+              <a href="{{ url_for('graphstress') }}" id="blogBtn" class="btn">Overview</a>
+              
+            </div>
+  
+            <div class="cover">
+              <img src="/static/code.jpg" alt="cover image">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    
+    <!-- CHAT BAR BLOCK -->
+      <div class="chat-bar-collapsible">
+          <button id="chat-button" type="button" class="collapsible">CareBot
+              <i id="chat-icon" style="color: #fff;" class="fa fa-fw fa-robot fa-spin"></i>
+          </button>
+
+          <div class="content">
+              <div class="full-chat-block">
+                  <!-- Message Container -->
+                  <div class="outer-container">
+                      <div class="chat-container">
+                          <!-- Messages -->
+                          <div id="chatbox">
+                              <h5 id="chat-timestamp"></h5>
+                              <p class="botText"><span>Hi! I'm CareBot your mental health assistant 🙂. I am here to help and guide you on how to check your mental health condition. But before that you have to answer a few questions.</span></p><br>
+                              <p class="botText"><span>Is that okay? <br>(Type 'ok' if you agree)</span></p><br>
+                          </div>
+
+                          <!-- User input box -->
+                          <div class="chat-bar-input-block">
+                              <div id="userInput">
+                                  <input id="textInput" class="input-box" type="text" name="msg"
+                                      placeholder="Tap 'Enter' to send a message">
+                                  <p></p>
+                              </div>
+
+                              <div class="chat-bar-icons">
+                                  <i id="chat-icon" style="color: crimson;" class="fa fa-fw fa-heart"
+                                      onclick="heartButton()"></i>
+                                  <i id="chat-icon" style="color: rgb(5, 56, 167);" class="fa fa-fw fa-send"
+                                      onclick="getBotResponse()"></i>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    <div>
+      <!-- The Modals -->
+    <div id="myModal1" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h1>User Agreement</h1>
+        <br>
+        <p>
+          The Mental Healthcare Assistant is a web application designed for Universiti Teknologi Malaysia, Melaka students (UTeM). 
+          The website contains questions and concerns about your mental health issues. 
+          You agreed to undergo screening and share your experiences (if appropriate) about your mental health when you accessed the web application.
+        </p>
+        <br>
+        <p>The web application has 2 features which is conversing with the chatbot and directly 
+          taking a test without conversing. Some questions are sensitive so, user’s understanding and patience is required. 
+          The results and information of the user will be held with confidentiality with regards to the 
+          Republic Act 10173 - Data Privacy Act of 2012.
+        </p>
+        <br>
+        <button class="agree">I Agree</button>
+      </div>
+      
+    </div>
+
+    <div id="myModal2" class="modal">
+      <div class="modal-content" style="background-color: #2c1657;">
+        <h1 id="typeOfTest" >Depression Test</h1>
+        <div class="quiz-container details" id="quiz">
+        <div class="quiz-header">
+          <h2 id="question">Question Text</h2>
+          <ul>
+            <li>
+              <input type="radio" name="answer" id="a" class="answer">
+              <label for="a" id="a_text">Answer</label>
+            </li>
+    
+            <li>
+              <input type="radio" name="answer" id="b" class="answer">
+              <label for="b" id="b_text">Answer</label>
+            </li>
+    
+            <li>
+              <input type="radio" name="answer" id="c" class="answer">
+              <label for="c" id="c_text">Answer</label>
+            </li>
+    
+            <li>
+              <input type="radio" name="answer" id="d" class="answer">
+              <label for="d" id="d_text">Answer</label>
+            </li>
+    
+          </ul>
+        </div>
+    
+        <button id="submit">Submit</button>
+    
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal3" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content" style="text-align: center; margin-top: 100px;">
+        <h1>Take a Test</h1>
+        <h2>Over the last 2 weeks, how often have you been bothered by any of the following problems? Please note, all fields are required.</h2>
+        <div class="row">
+          <div class="column">
+            <div class="card">
+            <h3>ANXIETY</h3>
+            <a href="#" id="anx" class="test"><img src="https://www.theblackberrycenter.com/wp-content/uploads/2020/04/shutterstock_1409500496-e1604669942103.jpg.webp" alt="Anxiety"></a>         
+            </div>
+          </div>
+          <div class="column">
+            <div class="card">
+            <h3>STRESS</h3>
+            <a href="#" id="stress" class="test"><img src="https://www.nea.org/sites/default/files/styles/1920wide/public/legacy/2016/09/student_stess_2-e1473788049606.jpeg?itok=hKiMPvn4" alt="Stress"></a>         
+            </div>
+          </div>
+          <div class="column">
+            <div class="card">
+            <h3>DEPRESSION</h3>
+            <a href="#" id="dep" class="test"><img src="https://www.sciencenewsforstudents.org/wp-content/uploads/2021/03/1440_teen_depression_reward_system_feat-1030x580.jpg" alt="Depression"></a>         
+            </div>
+          </div>
+        </div>        
+      </div>
+      
+    </div>
+
+    <div id="myModal4" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <h1>Result</h1>
+        <div class="circular-container">
+          <div class="circular-progress">
+            <div class="value-container">0%</div>
+          </div>
+        </div>
+        <div>
+            <h1 id="diagnose"></h1>
+            <p id="p">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum odit, saepe exercitationem dolores, porro et id error asperiores eius nulla autem impedit sint quae. Laborum voluptas ipsam nam voluptates voluptatum.</p>
+        </div>
+        
+        <button class="agree">Close</button>
+      </div>
+      
+
+      <script src="/static/response.js"></script>
+      <script src="/static/diagnose.js"></script>
+      <script src="/static/chat.js"></script>
+      <script src="/static/modal.js"></script>
+      <script src="/static/test.js"></script>
+     
+    </div>
+
+  </body>
+</html>
